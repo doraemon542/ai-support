@@ -1,0 +1,28 @@
+# Dependency directories (ভারী ফাইল ইগনোর করার জন্য)
+node_modules/
+**/node_modules/
+.pnpm-store/
+.yarn/
+
+# Build outputs (বিল্ড ফাইল ইগনোর করার জন্য)
+.next/
+out/
+dist/
+build/
+
+# Environment variables (সিক্রেট পাসওয়ার্ড/কী লুকাতে)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug logs (লগ ফাইল)
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+# Operating System files (ল্যাপটপের নিজস্ব ফাইল)
+.DS_Store
+Thumbs.db

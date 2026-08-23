@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Channel {
+  TELEGRAM
+  EMAIL
+}
+
+enum Sender {
+  USER
+  AGENT
+  AI
+}
+
+model Conversation {
+  id        String    @id @default(uuid())
+  channel   Channel
+  externalId String   // telegram chat id, or email address
+  createdAt DateTime  @default(now())
+  messages  Message[]
+}
+
+model Message {
+  id             String       @id @default(uuid())
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  conversationId String
+  sender         Sender
+  content        String
+  aiConfidence   Float?
+  createdAt      DateTime     @default(now())
+}
